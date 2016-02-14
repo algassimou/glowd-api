@@ -1,0 +1,15 @@
+build:
+  image: golang
+  commands:
+    - make deps
+    - make build
+
+publish:
+  docker:
+    registry: registry.polygon.duckdns.org:5000
+    repo: glowd/backend
+    tag:
+      - latest
+      - $$TAG
+    when:
+      event: tag
